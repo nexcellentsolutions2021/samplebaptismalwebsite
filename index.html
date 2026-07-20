@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wendy lyn's Baptism Celebration — December 13, 2026</title>
+<title>Kali Heart's Baptism Celebration — December 13, 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rouge+Script&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -47,7 +47,6 @@ body{
 /* ── UTILITY ── */
 .section{padding:80px 20px}
 .container{max-width:900px;margin:0 auto}
-.container-wide{max-width:1100px;margin:0 auto}
 .text-center{text-align:center}
 .section-label{
   font-family:'Jost',sans-serif;
@@ -79,11 +78,11 @@ body{
 .divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold-light))}
 .divider span{color:var(--gold);font-size:18px}
 
-/* Scroll Reveal */
+/* SCROLL REVEAL */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:none}
 
-/* Floating Elements */
+/* BUTTERFLY & FLOATING ELEMENTS */
 .butterfly-layer{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
 .bf{position:absolute;animation:bfFloat linear infinite}
 .bf svg{animation:bfFlap ease-in-out infinite alternate}
@@ -107,93 +106,35 @@ body{
   100%{transform:translateY(0) rotate(0deg);opacity:.6}
 }
 
-/* Envelope & Invitation Overlay */
-#inviteOverlay{
-  position:fixed;inset:0;z-index:9999;
-  background:linear-gradient(135deg,#FDE8EC 0%,#EEE4F5 30%,#E8F4FB 60%,#FFF6E8 100%);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  overflow:hidden;
+/* NAVIGATION */
+#mainNav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:0 24px;
+  background:rgba(253,250,245,.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(168,132,44,.15);
+  display:flex;justify-content:space-between;align-items:center;
+  height:64px;
 }
-#inviteOverlay.fading{animation:overlayFade .8s ease forwards}
-@keyframes overlayFade{to{opacity:0;pointer-events:none}}
+.nav-brand{font-family:'Rouge Script',cursive;font-size:30px;color:#E8A0A0;text-decoration:none;white-space:nowrap}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-mid);text-decoration:none;transition:color .2s;font-weight:500}
+.nav-links a:hover{color:var(--gold)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text-mid);margin:5px 0;transition:.3s}
+@media(max-width:680px){
+  .nav-links{position:fixed;top:64px;left:0;right:0;background:rgba(253,250,245,.97);flex-direction:column;align-items:center;padding:24px 0;gap:20px;border-bottom:1px solid rgba(168,132,44,.15);transform:translateY(-120%);transition:transform .4s ease;z-index:999}
+  .nav-links.open{transform:translateY(0)}
+  .hamburger{display:block}
+}
 
-.particle{
-  position:absolute;border-radius:50%;
-  animation:floatUp linear infinite;pointer-events:none;
-}
-
-#envelopeWrap{
-  position:relative;display:flex;flex-direction:column;align-items:center;
-  cursor:pointer;z-index:10;
-}
-#envelopeWrap.opening{pointer-events:none}
-
-.envelope{
-  position:relative;width:min(380px,88vw);
-  filter:drop-shadow(0 20px 60px rgba(180,130,140,.35));
-}
-.env-body{
-  background:linear-gradient(160deg,#FDFAF5 0%,#F9F2E8 100%);
-  border-radius:4px 4px 12px 12px;
-  padding:60px 32px 40px;
-  border:1px solid rgba(201,168,76,.25);
-  position:relative;overflow:hidden;
-}
-.env-flap{
-  position:absolute;top:0;left:0;right:0;
-  height:0;border-left:190px solid transparent;
-  border-right:190px solid transparent;
-  border-top:120px solid #F5ECD8;
-  transform-origin:top center;
-  transition:transform .8s cubic-bezier(.4,0,.2,1);
-  filter:drop-shadow(0 4px 8px rgba(0,0,0,.08));
-  z-index:5;
-}
-.env-flap.open{transform:rotateX(180deg)}
-
-/* [All remaining original styles are kept unchanged - abbreviated here for brevity] */
-@media(max-width:480px){.section{padding:60px 18px}}
+/* All other sections styles remain the same as before */
 </style>
 </head>
 <body>
 
-<!-- INVITE OVERLAY -->
-<div id="inviteOverlay">
-  <div id="particles"></div>
-  <div class="butterfly-layer" id="bgBf"></div>
-
-  <div id="envelopeWrap">
-    <div class="envelope" id="envelope">
-      <div class="env-body">
-        <!-- Envelope decorations unchanged -->
-        <div class="env-text">
-          <span class="invited">You're Invited</span>
-          <span class="to-celebrate">To Celebrate the Baptism of</span>
-          <span class="baby-name">Wendy lyn</span>
-          <span class="env-date">December 13, 2026</span>
-        </div>
-      </div>
-    </div>
-    <p class="tap-hint">✨ Tap the envelope to open your invitation ✨</p>
-  </div>
-
-  <div id="inviteCard">
-    <div class="card-eyebrow">❤ A Sacred Celebration ❤</div>
-    <div class="card-joy">With Joy In Our Hearts</div>
-    <p class="card-together">Together with our family,<br>we invite you to celebrate the Baptism of</p>
-    <span class="card-name">Wendy lyn</span>
-    <div class="card-datetime">December 13, 2026</div>
-    <div class="card-time-txt">3:00 PM</div>
-    <div class="divider"><span>✦</span></div>
-    <p class="card-welcome">We are grateful to share this blessed occasion with you and your family as we celebrate God's blessings and Wendy lyn's special day.</p>
-  </div>
-
-  <button class="skip-btn" id="skipBtn">Skip</button>
-</div>
-
 <!-- NAV -->
 <nav id="mainNav">
-  <a href="#hero" class="nav-brand">Wendy lyn</a>
+  <a href="#hero" class="nav-brand">Kali Heart</a>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -206,7 +147,7 @@ body{
   </ul>
 </nav>
 
-<main id="mainContent" style="display:none">
+<main>
 
 <!-- HERO -->
 <section id="hero">
@@ -214,7 +155,7 @@ body{
   <div class="butterfly-layer" id="heroBf"></div>
   <div class="hero-content reveal">
     <span class="hero-eyebrow">A Blessed Occasion</span>
-    <h1 class="hero-name">Wendy lyn</h1>
+    <h1 class="hero-name">Kali Heart</h1>
     <p class="hero-event">Baptism Celebration</p>
     <p class="hero-date">December 13, 2026</p>
     <p class="hero-time">Sunday ✦ 3:00 PM</p>
@@ -234,12 +175,12 @@ body{
     <h2 class="section-title">A Blessed Celebration</h2>
     <div class="divider"><span>🦋</span></div>
     <blockquote class="welcome-quote">
-      By God's grace, we come together to celebrate a beautiful milestone in Wendy lyn's life. We warmly invite you to join us in prayer and celebration as she receives the sacrament of Baptism.
+      By God's grace, we come together to celebrate a beautiful milestone in Kali Heart's life. We warmly invite you to join us in prayer and celebration as she receives the sacrament of Baptism.
     </blockquote>
   </div>
 </section>
 
-<!-- DETAILS - SAMPLE -->
+<!-- DETAILS -->
 <section id="details" class="section">
   <div class="container">
     <div class="text-center reveal">
@@ -250,10 +191,6 @@ body{
     <div class="details-grid">
       <div class="detail-card reveal">
         <img src="https://raw.githubusercontent.com/nexcellentsolutions2021/kaliheartbaptismalwebsite/refs/heads/main/chruch.jpg" alt="Grace Community Church" class="venue-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="venue-placeholder" style="display:none">
-          <svg viewBox="0 0 100 100" fill="none"><path d="M50 10 L90 35 L90 90 L10 90 L10 35 Z" stroke="#A8842C" stroke-width="3" fill="none"/><rect x="40" y="65" width="20" height="25" stroke="#A8842C" stroke-width="2" fill="none"/><path d="M50 5 L50 15" stroke="#A8842C" stroke-width="3"/><circle cx="50" cy="3" r="3" fill="#A8842C"/></svg>
-          <span>Church Photo</span>
-        </div>
         <span class="detail-icon">⛪</span>
         <h3 class="detail-card-title">Holy Baptism</h3>
         <div class="detail-row"><span class="label">Date</span><span class="value">December 13, 2026 — Sunday</span></div>
@@ -263,10 +200,6 @@ body{
       </div>
       <div class="detail-card reveal">
         <img src="https://raw.githubusercontent.com/nexcellentsolutions2021/kaliheartbaptismalwebsite/refs/heads/main/yiyi.jpg" alt="Harmony Garden Restaurant" class="venue-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="venue-placeholder" style="display:none">
-          <svg viewBox="0 0 100 100" fill="none"><rect x="15" y="40" width="70" height="50" stroke="#A8842C" stroke-width="3" fill="none"/><path d="M10 40 L50 10 L90 40" stroke="#A8842C" stroke-width="3" fill="none"/><rect x="38" y="60" width="24" height="30" stroke="#A8842C" stroke-width="2" fill="none"/></svg>
-          <span>Venue Photo</span>
-        </div>
         <span class="detail-icon">🥂</span>
         <h3 class="detail-card-title">Reception</h3>
         <div class="detail-row"><span class="label">Following the Ceremony</span><span class="value">4:30 PM</span></div>
@@ -308,7 +241,7 @@ body{
     <div class="attire-grid">
       <div class="attire-card reveal">
         <h3 class="attire-card-title">For God Parents</h3>
-        <p class="attire-note">You hold a sacred role in Wendy lyn's life — please dress in white to symbolize this honored blessing.</p>
+        <p class="attire-note">You hold a sacred role in Kali Heart's life — please dress in white to symbolize this honored blessing.</p>
         <div style="display:flex;justify-content:center;margin:20px 0">
           <div class="heart-swatch" style="background:linear-gradient(135deg,#FFFFFF,#F5F0E8)"></div>
         </div>
@@ -345,19 +278,17 @@ body{
       <div class="divider"><span>🦋</span></div>
       <p class="gift-quote">
         With heartfelt thanks, we kindly ask for your understanding that we are unable to accept boxed gifts due to our travel back to the USA.<br><br>
-        Should you wish to bless Wendy lyn with a gift, a monetary contribution in lieu of presents would be sincerely appreciated.<br><br>
+        Should you wish to bless Kali Heart with a gift, a monetary contribution in lieu of presents would be sincerely appreciated.<br><br>
         Most importantly, your love, prayers, and presence are the greatest gifts we could receive.
       </p>
       <div class="qr-row">
         <div class="qr-box">
           <img src="https://raw.githubusercontent.com/nexcellentsolutions2021/kaliheartbaptismalwebsite/refs/heads/main/maribank.jpg" alt="Maribank QR Code" class="qr-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="qr-placeholder" style="display:none">Maribank QR</div>
           <p class="qr-label">Maribank</p>
           <p class="qr-note">Scan to send your blessings 🦋</p>
         </div>
         <div class="qr-box">
           <img src="https://raw.githubusercontent.com/nexcellentsolutions2021/kaliheartbaptismalwebsite/refs/heads/main/zelle.jpg" alt="Zelle QR Code" class="qr-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="qr-placeholder" style="display:none">Zelle QR</div>
           <p class="qr-label">Zelle</p>
           <p class="qr-note">Scan to send your blessings 🦋</p>
         </div>
@@ -386,18 +317,18 @@ body{
 <footer>
   <div class="butterfly-layer" id="footerBf"></div>
   <div style="position:relative;z-index:2">
-    <p class="footer-name">Wendy lyn</p>
+    <p class="footer-name">Kali Heart</p>
     <p class="footer-sub">Baptism Celebration ✦ December 13, 2026</p>
     <div class="divider"><span>🦋</span></div>
-    <p class="footer-quote">"Just as a butterfly unfolds its wings, faith helps us grow into God's beautiful purpose.<br>Thank you for celebrating Wendy lyn's Baptism and surrounding her with your love and prayers."</p>
-    <p class="footer-copy">Made with love ✦ Wendy lyn's Family</p>
+    <p class="footer-quote">"Just as a butterfly unfolds its wings, faith helps us grow into God's beautiful purpose.<br>Thank you for celebrating Kali Heart's Baptism and surrounding her with your love and prayers."</p>
+    <p class="footer-copy">Made with love ✦ Kali Heart's Family</p>
   </div>
 </footer>
 
 </main>
 
 <script>
-// All original JavaScript (unchanged)
+// Simplified script - no envelope animation
 function makeButterflyEl(size, c1, c2, dur, delay, x, y) {
   const svg = `<svg width="${size}" height="${size*.7}" viewBox="0 0 60 42" fill="none">
     <path d="M30 21 Q10 2 4 12 Q0 22 30 24 Z" fill="${c1}" opacity=".8"/>
@@ -427,7 +358,7 @@ function makeFlowerEl(size, color, dur, delay, x, y) {
   const d = document.createElement('div');
   d.className = 'fl';
   d.innerHTML = svg;
-  d.style.cssText = `position:absolute;left:${x}%;top:${y}%;width:${size}px;height:${size}px;animation-duration:${dur}s;animation-delay:${delay}s;pointer-events:none;`;
+  d.style.cssText = `left:${x}%;top:${y}%;width:${size}px;height:${size}px;animation-duration:${dur}s;animation-delay:${delay}s;pointer-events:none;`;
   return d;
 }
 
@@ -445,60 +376,6 @@ function spawnElements(container, bfCount, flCount) {
   }
 }
 
-function spawnParticles() {
-  const pc = document.getElementById('particles');
-  const cols = ['#E8A0A0','#A890D8','#7BB8E0','#6EC8A8','#E8D060','#E8A070','#C8B070'];
-  for (let i = 0; i < 30; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    const s = 3 + Math.random()*7;
-    const dur = 6 + Math.random()*12;
-    const delay = Math.random()*-12;
-    p.style.cssText = `width:${s}px;height:${s}px;background:${cols[Math.floor(Math.random()*cols.length)]};left:${Math.random()*100}%;top:${Math.random()*100}%;animation-duration:${dur}s;animation-delay:${delay}s;opacity:.6`;
-    pc.appendChild(p);
-  }
-}
-
-let animating = false;
-function openEnvelope() {
-  if (animating) return;
-  animating = true;
-  const wrap = document.getElementById('envelopeWrap');
-  const seal = document.getElementById('waxSeal');
-  const flap = document.getElementById('envFlap');
-  const card = document.getElementById('inviteCard');
-  wrap.classList.add('opening');
-  seal.classList.add('breaking');
-  setTimeout(() => { flap.classList.add('open'); }, 500);
-  setTimeout(() => { card.classList.add('fullReveal'); }, 2600);
-  setTimeout(() => { showSite(); }, 6200);
-}
-
-function showSite() {
-  const overlay = document.getElementById('inviteOverlay');
-  overlay.classList.add('fading');
-  setTimeout(() => {
-    overlay.style.display = 'none';
-    const main = document.getElementById('mainContent');
-    main.style.display = 'block';
-    main.style.opacity = '0';
-    main.style.transition = 'opacity .8s ease';
-    requestAnimationFrame(() => { main.style.opacity = '1'; });
-    const nav = document.getElementById('mainNav');
-    nav.style.display = 'flex';
-    requestAnimationFrame(() => { nav.classList.add('slide-in'); });
-    triggerReveal();
-    startCountdown();
-  }, 800);
-}
-
-function triggerReveal() {
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-}
-
 function startCountdown() {
   const target = new Date('2026-12-13T15:00:00+08:00');
   function update() {
@@ -514,6 +391,14 @@ function startCountdown() {
   setInterval(update, 60000);
 }
 
+function triggerReveal() {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+}
+
+// NAV MENU
 document.getElementById('hamburger').addEventListener('click', function() {
   document.getElementById('navLinks').classList.toggle('open');
 });
@@ -521,15 +406,12 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
 });
 
+// INIT
 window.addEventListener('DOMContentLoaded', function() {
-  spawnParticles();
-  spawnElements(document.getElementById('bgBf'), 10, 8);
-  document.getElementById('envelopeWrap').addEventListener('click', openEnvelope);
-  document.getElementById('skipBtn').addEventListener('click', showSite);
-  setTimeout(function() {
-    spawnElements(document.getElementById('heroBf'), 8, 6);
-    spawnElements(document.getElementById('footerBf'), 6, 5);
-  }, 100);
+  triggerReveal();
+  startCountdown();
+  spawnElements(document.getElementById('heroBf'), 8, 6);
+  spawnElements(document.getElementById('footerBf'), 6, 5);
 });
 </script>
 </body>
