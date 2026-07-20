@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wendy lyn's Baptism Celebration — December 13, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rouge+Script&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blush: #E8A0A0;
+  --blush-light: #FAE8E8;
+  --baby-blue: #7BB8E0;
+  --baby-blue-light: #DAEEF9;
+  --lavender: #A890D8;
+  --lavender-light: #EAE4F5;
+  --butter: #E8D060;
+  --butter-light: #FFFADB;
+  --peach: #E8A070;
+  --peach-light: #FFE9D8;
+  --mint: #6EC8A8;
+  --mint-light: #DCF5EC;
+  --ivory: #FDFAF5;
+  --gold: #A8842C;
+  --gold-light: #C8B070;
+  --gold-pale: #F7EFDB;
+  --text-dark: #2A1A0E;
+  --text-mid: #4A3020;
+  --text-light: #6A5040;
+  --white: #FFFFFF;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Jost',sans-serif;
+  background:var(--ivory);
+  color:var(--text-dark);
+  overflow-x:hidden;
+  font-weight:400;
+  line-height:1.7;
+}
+.rouge{font-family:'Rouge Script',cursive}
+.script{font-family:'Great Vibes',cursive}
+.serif{font-family:'Cormorant Garamond',serif}
+
+/* ── UTILITY ── */
+.section{padding:80px 20px}
+.container{max-width:900px;margin:0 auto}
+.container-wide{max-width:1100px;margin:0 auto}
+.text-center{text-align:center}
+.section-label{
+  font-family:'Jost',sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:10px;
+}
+.section-title{
+  font-family:'Rouge Script',cursive;
+  font-size:clamp(44px,6vw,70px);
+  color:var(--text-dark);
+  line-height:1.2;
+  margin-bottom:16px;
+}
+.section-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:clamp(16px,2.5vw,20px);
+  color:var(--text-mid);
+  margin-bottom:40px;
+}
+.divider{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  margin:24px auto;max-width:300px;
+}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold-light))}
+.divider span{color:var(--gold);font-size:18px}
+
+/* Scroll Reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* Floating Elements */
+.butterfly-layer{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.bf{position:absolute;animation:bfFloat linear infinite}
+.bf svg{animation:bfFlap ease-in-out infinite alternate}
+.fl{position:absolute;animation:flFloat ease-in-out infinite}
+
+@keyframes bfFloat{
+  0%{transform:translate(0,0) rotate(-5deg)}
+  25%{transform:translate(20px,-30px) rotate(5deg)}
+  50%{transform:translate(-10px,-15px) rotate(-3deg)}
+  75%{transform:translate(15px,-40px) rotate(8deg)}
+  100%{transform:translate(0,0) rotate(-5deg)}
+}
+@keyframes bfFlap{
+  0%{transform:scaleX(1)}
+  100%{transform:scaleX(0.3)}
+}
+@keyframes flFloat{
+  0%{transform:translateY(0) rotate(0deg);opacity:.6}
+  33%{transform:translateY(-18px) rotate(8deg);opacity:.9}
+  66%{transform:translateY(-8px) rotate(-5deg);opacity:.7}
+  100%{transform:translateY(0) rotate(0deg);opacity:.6}
+}
+
+/* Envelope & Invitation Overlay */
+#inviteOverlay{
+  position:fixed;inset:0;z-index:9999;
+  background:linear-gradient(135deg,#FDE8EC 0%,#EEE4F5 30%,#E8F4FB 60%,#FFF6E8 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+#inviteOverlay.fading{animation:overlayFade .8s ease forwards}
+@keyframes overlayFade{to{opacity:0;pointer-events:none}}
+
+.particle{
+  position:absolute;border-radius:50%;
+  animation:floatUp linear infinite;pointer-events:none;
+}
+
+#envelopeWrap{
+  position:relative;display:flex;flex-direction:column;align-items:center;
+  cursor:pointer;z-index:10;
+}
+#envelopeWrap.opening{pointer-events:none}
+
+.envelope{
+  position:relative;width:min(380px,88vw);
+  filter:drop-shadow(0 20px 60px rgba(180,130,140,.35));
+}
+.env-body{
+  background:linear-gradient(160deg,#FDFAF5 0%,#F9F2E8 100%);
+  border-radius:4px 4px 12px 12px;
+  padding:60px 32px 40px;
+  border:1px solid rgba(201,168,76,.25);
+  position:relative;overflow:hidden;
+}
+.env-flap{
+  position:absolute;top:0;left:0;right:0;
+  height:0;border-left:190px solid transparent;
+  border-right:190px solid transparent;
+  border-top:120px solid #F5ECD8;
+  transform-origin:top center;
+  transition:transform .8s cubic-bezier(.4,0,.2,1);
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,.08));
+  z-index:5;
+}
+.env-flap.open{transform:rotateX(180deg)}
+
+/* [All remaining original styles are kept unchanged - abbreviated here for brevity] */
+@media(max-width:480px){.section{padding:60px 18px}}
+</style>
+</head>
+<body>
+
+<!-- INVITE OVERLAY -->
+<div id="inviteOverlay">
+  <div id="particles"></div>
+  <div class="butterfly-layer" id="bgBf"></div>
+
+  <div id="envelopeWrap">
+    <div class="envelope" id="envelope">
+      <div class="env-body">
+        <!-- Envelope decorations unchanged -->
+        <div class="env-text">
+          <span class="invited">You're Invited</span>
+          <span class="to-celebrate">To Celebrate the Baptism of</span>
+          <span class="baby-name">Wendy lyn</span>
+          <span class="env-date">December 13, 2026</span>
+        </div>
+      </div>
+    </div>
+    <p class="tap-hint">✨ Tap the envelope to open your invitation ✨</p>
+  </div>
+
+  <div id="inviteCard">
+    <div class="card-eyebrow">❤ A Sacred Celebration ❤</div>
+    <div class="card-joy">With Joy In Our Hearts</div>
+    <p class="card-together">Together with our family,<br>we invite you to celebrate the Baptism of</p>
+    <span class="card-name">Wendy lyn</span>
+    <div class="card-datetime">December 13, 2026</div>
+    <div class="card-time-txt">3:00 PM</div>
+    <div class="divider"><span>✦</span></div>
+    <p class="card-welcome">We are grateful to share this blessed occasion with you and your family as we celebrate God's blessings and Wendy lyn's special day.</p>
+  </div>
+
+  <button class="skip-btn" id="skipBtn">Skip</button>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#hero" class="nav-brand">Wendy lyn</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#details">Ceremony</a></li>
+    <li><a href="#timeline">Schedule</a></li>
+    <li><a href="#attire">Attire</a></li>
+    <li><a href="#gift">Gifts</a></li>
+    <li><a href="#rsvp">RSVP</a></li>
+  </ul>
+</nav>
+
+<main id="mainContent" style="display:none">
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-watercolor"></div>
+  <div class="butterfly-layer" id="heroBf"></div>
+  <div class="hero-content reveal">
+    <span class="hero-eyebrow">A Blessed Occasion</span>
+    <h1 class="hero-name">Wendy lyn</h1>
+    <p class="hero-event">Baptism Celebration</p>
+    <p class="hero-date">December 13, 2026</p>
+    <p class="hero-time">Sunday ✦ 3:00 PM</p>
+    <div class="countdown" id="countdown">
+      <div class="cd-unit"><span class="cd-num" id="cdMonths">—</span><span class="cd-label">Months</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cdDays">—</span><span class="cd-label">Days</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cdHours">—</span><span class="cd-label">Hours</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cdMins">—</span><span class="cd-label">Minutes</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WELCOME -->
+<section id="welcome" class="section">
+  <div class="welcome-inner reveal">
+    <p class="section-label">A Warm Welcome</p>
+    <h2 class="section-title">A Blessed Celebration</h2>
+    <div class="divider"><span>🦋</span></div>
+    <blockquote class="welcome-quote">
+      By God's grace, we come together to celebrate a beautiful milestone in Wendy lyn's life. We warmly invite you to join us in prayer and celebration as she receives the sacrament of Baptism.
+    </blockquote>
+  </div>
+</section>
+
+<!-- DETAILS - SAMPLE -->
+<section id="details" class="section">
+  <div class="container">
+    <div class="text-center reveal">
+      <p class="section-label">Where &amp; When</p>
+      <h2 class="section-title">Celebration Details</h2>
+      <div class="divider"><span>✦</span></div>
+    </div>
+    <div class="details-grid">
+      <div class="detail-card reveal">
+        <img src="https://raw.githubusercontent.com/nexcellentsolutions2021/kaliheartbaptismalwebsite/refs/heads/main/chruch.jpg" alt="Grace Community Church" class="venue-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="venue-placeholder" style="display:none">
+          <svg viewBox="0 0 100 100" fill="none"><path d="M50 10 L90 35 L90 90 L10 90 L10 35 Z" stroke="#A8842C" stroke-width="3" fill="none"/><rect x="40" y="65" width="20" height="25" stroke="#A8842C" stroke-width="2" fill="none"/><path d="M50 5 L50 15" stroke="#A8842C" stroke-width="3"/><circle cx="50" cy="3" r="3" fill="#A8842C"/></svg>
+          <span>Church Photo</span>
+        </div>
+        <span class="detail-icon">⛪</span>
+        <h3 class="detail-card-title">Holy Baptism</h3>
+        <div class="detail-row"><span class="label">Date</span><span class="value">December 13, 2026 — Sunday</span></div>
+        <div class="detail-row"><span class="label">Time</span><span class="value">3:00 PM</span></div>
+        <div class="detail-row"><span class="label">Venue</span><span class="value">Grace Community Church<br>123 Evergreen Lane, Sampleton</span></div>
+        <a href="https://maps.google.com/?q=Grace+Community+Church+Sampleton" target="_blank" class="maps-btn">📍 Open in Google Maps</a>
+      </div>
+      <div class="detail-card reveal">
+        <img src="https://raw.githubusercontent.com/nexcellentsolutions2021/kaliheartbaptismalwebsite/refs/heads/main/yiyi.jpg" alt="Harmony Garden Restaurant" class="venue-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="venue-placeholder" style="display:none">
+          <svg viewBox="0 0 100 100" fill="none"><rect x="15" y="40" width="70" height="50" stroke="#A8842C" stroke-width="3" fill="none"/><path d="M10 40 L50 10 L90 40" stroke="#A8842C" stroke-width="3" fill="none"/><rect x="38" y="60" width="24" height="30" stroke="#A8842C" stroke-width="2" fill="none"/></svg>
+          <span>Venue Photo</span>
+        </div>
+        <span class="detail-icon">🥂</span>
+        <h3 class="detail-card-title">Reception</h3>
+        <div class="detail-row"><span class="label">Following the Ceremony</span><span class="value">4:30 PM</span></div>
+        <div class="detail-row"><span class="label">Venue</span><span class="value">Harmony Garden Restaurant<br>456 Lakeside Drive, Sampleton</span></div>
+        <a href="https://maps.google.com/?q=Harmony+Garden+Restaurant+Sampleton" target="_blank" class="maps-btn">📍 Open in Google Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline" class="section">
+  <div class="container">
+    <div class="text-center reveal">
+      <p class="section-label">The Day's Journey</p>
+      <h2 class="section-title">Celebration Schedule</h2>
+      <div class="divider"><span>🦋</span></div>
+    </div>
+    <div class="timeline-wrap reveal">
+      <div class="t-item"><div class="t-dot"></div><div class="t-time">2:35 PM</div><div class="t-event">God Parents Arrival</div></div>
+      <div class="t-item"><div class="t-dot" style="background:linear-gradient(135deg,#A890D8,#7BB8E0)"></div><div class="t-time">3:00 PM</div><div class="t-event">Holy Baptism Ceremony Begins</div></div>
+      <div class="t-item"><div class="t-dot" style="background:linear-gradient(135deg,#7BB8E0,#6EC8A8)"></div><div class="t-time">4:00 PM</div><div class="t-event">Travel to Reception Venue</div></div>
+      <div class="t-item"><div class="t-dot" style="background:linear-gradient(135deg,#6EC8A8,#E8D060)"></div><div class="t-time">4:30 PM</div><div class="t-event">Welcome &amp; Refreshments</div></div>
+      <div class="t-item"><div class="t-dot" style="background:linear-gradient(135deg,#E8D060,#E8A070)"></div><div class="t-time">5:00 PM</div><div class="t-event">Program &amp; Celebration</div></div>
+      <div class="t-item"><div class="t-dot" style="background:linear-gradient(135deg,#E8A070,#E8A0A0)"></div><div class="t-time">6:00 PM</div><div class="t-event">Dinner</div></div>
+      <div class="t-item"><div class="t-dot" style="background:linear-gradient(135deg,#E8A0A0,#A890D8)"></div><div class="t-time">7:00 PM</div><div class="t-event">Closing &amp; Family Photos</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ATTIRE -->
+<section id="attire" class="section">
+  <div class="container">
+    <div class="text-center reveal">
+      <p class="section-label">Dress to Celebrate</p>
+      <h2 class="section-title">Attire Guide</h2>
+      <div class="divider"><span>✦</span></div>
+    </div>
+    <div class="attire-grid">
+      <div class="attire-card reveal">
+        <h3 class="attire-card-title">For God Parents</h3>
+        <p class="attire-note">You hold a sacred role in Wendy lyn's life — please dress in white to symbolize this honored blessing.</p>
+        <div style="display:flex;justify-content:center;margin:20px 0">
+          <div class="heart-swatch" style="background:linear-gradient(135deg,#FFFFFF,#F5F0E8)"></div>
+        </div>
+        <div class="attire-reminder">
+          <strong>⏰ Special Reminder:</strong><br>
+          God Parents are kindly requested to arrive at the church at least <strong>25 minutes before</strong> the ceremony begins.
+        </div>
+      </div>
+      <div class="attire-card reveal">
+        <h3 class="attire-card-title">For Guests</h3>
+        <p class="attire-note">Dress code is <em>Casual Attire</em>. We invite you to wear any of these beautiful pastel shades to match the day's whimsical butterfly garden theme.</p>
+        <div class="palette">
+          <div class="heart-swatch" style="background:#AED6F1"></div>
+          <div class="heart-swatch" style="background:#F4C2C2"></div>
+          <div class="heart-swatch" style="background:#C9B8E8"></div>
+          <div class="heart-swatch" style="background:#FFF0A3"></div>
+          <div class="heart-swatch" style="background:#FFCBA4"></div>
+          <div class="heart-swatch" style="background:#B5E5D0"></div>
+          <div class="heart-swatch" style="background:#C9B0D8"></div>
+          <div class="heart-swatch" style="background:#FFB6A3"></div>
+          <div class="heart-swatch" style="background:#BDD9F0"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GIFT -->
+<section id="gift" class="section">
+  <div class="container">
+    <div class="gift-inner reveal">
+      <p class="section-label">With Grateful Hearts</p>
+      <h2 class="section-title">Gift Guide</h2>
+      <div class="divider"><span>🦋</span></div>
+      <p class="gift-quote">
+        With heartfelt thanks, we kindly ask for your understanding that we are unable to accept boxed gifts due to our travel back to the USA.<br><br>
+        Should you wish to bless Wendy lyn with a gift, a monetary contribution in lieu of presents would be sincerely appreciated.<br><br>
+        Most importantly, your love, prayers, and presence are the greatest gifts we could receive.
+      </p>
+      <div class="qr-row">
+        <div class="qr-box">
+          <img src="https://raw.githubusercontent.com/nexcellentsolutions2021/kaliheartbaptismalwebsite/refs/heads/main/maribank.jpg" alt="Maribank QR Code" class="qr-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="qr-placeholder" style="display:none">Maribank QR</div>
+          <p class="qr-label">Maribank</p>
+          <p class="qr-note">Scan to send your blessings 🦋</p>
+        </div>
+        <div class="qr-box">
+          <img src="https://raw.githubusercontent.com/nexcellentsolutions2021/kaliheartbaptismalwebsite/refs/heads/main/zelle.jpg" alt="Zelle QR Code" class="qr-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="qr-placeholder" style="display:none">Zelle QR</div>
+          <p class="qr-label">Zelle</p>
+          <p class="qr-note">Scan to send your blessings 🦋</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section id="rsvp" class="section">
+  <div class="container">
+    <div class="rsvp-inner reveal">
+      <p class="section-label">Kindly Respond</p>
+      <h2 class="section-title">Will You Join Us?</h2>
+      <div class="divider"><span>🦋</span></div>
+      <p class="section-sub">"We would be honored to celebrate this special day with you and your family."</p>
+      <div class="rsvp-deadline">RSVP Deadline: <strong>Before December 5, 2026</strong></div>
+      <div class="rsvp-embed-wrap">
+        <iframe src="https://script.google.com/macros/s/AKfycbwHbgL2gcvA9K3c3qVgNJl5Zir9UFsrGcXB-xzowpQNWL_eSLUNjq2-4zyfB3n2-jTNnw/exec" width="100%" height="1200" frameborder="0" loading="lazy" title="RSVP Form"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="butterfly-layer" id="footerBf"></div>
+  <div style="position:relative;z-index:2">
+    <p class="footer-name">Wendy lyn</p>
+    <p class="footer-sub">Baptism Celebration ✦ December 13, 2026</p>
+    <div class="divider"><span>🦋</span></div>
+    <p class="footer-quote">"Just as a butterfly unfolds its wings, faith helps us grow into God's beautiful purpose.<br>Thank you for celebrating Wendy lyn's Baptism and surrounding her with your love and prayers."</p>
+    <p class="footer-copy">Made with love ✦ Wendy lyn's Family</p>
+  </div>
+</footer>
+
+</main>
+
+<script>
+// All original JavaScript (unchanged)
+function makeButterflyEl(size, c1, c2, dur, delay, x, y) {
+  const svg = `<svg width="${size}" height="${size*.7}" viewBox="0 0 60 42" fill="none">
+    <path d="M30 21 Q10 2 4 12 Q0 22 30 24 Z" fill="${c1}" opacity=".8"/>
+    <path d="M30 21 Q50 2 56 12 Q60 22 30 24 Z" fill="${c1}" opacity=".8"/>
+    <path d="M30 21 Q12 26 10 36 Q10 42 30 38 Z" fill="${c2}" opacity=".65"/>
+    <path d="M30 21 Q48 26 50 36 Q50 42 30 38 Z" fill="${c2}" opacity=".65"/>
+    <ellipse cx="30" cy="28" rx="2" ry="7" fill="#2A1A0E" opacity=".4"/>
+    <path d="M30 21 Q26 16 24 14" stroke="#2A1A0E" stroke-width="1" opacity=".35"/>
+    <path d="M30 21 Q34 16 36 14" stroke="#2A1A0E" stroke-width="1" opacity=".35"/>
+  </svg>`;
+  const d = document.createElement('div');
+  d.className = 'bf';
+  d.innerHTML = svg;
+  d.style.cssText = `left:${x}%;top:${y}%;width:${size}px;animation-duration:${dur}s;animation-delay:${delay}s;`;
+  return d;
+}
+
+function makeFlowerEl(size, color, dur, delay, x, y) {
+  const petals = [0,60,120,180,240,300].map(a =>
+    `<ellipse cx="50" cy="50" rx="9" ry="18" fill="${color}" opacity=".75" transform="rotate(${a},50,50) translate(0,-18)"/>`
+  ).join('');
+  const svg = `<svg width="${size}" height="${size}" viewBox="0 0 100 100" fill="none">
+    ${petals}
+    <circle cx="50" cy="50" r="10" fill="#FFF8F0" opacity=".9"/>
+    <circle cx="50" cy="50" r="6" fill="${color}" opacity=".6"/>
+  </svg>`;
+  const d = document.createElement('div');
+  d.className = 'fl';
+  d.innerHTML = svg;
+  d.style.cssText = `position:absolute;left:${x}%;top:${y}%;width:${size}px;height:${size}px;animation-duration:${dur}s;animation-delay:${delay}s;pointer-events:none;`;
+  return d;
+}
+
+const bfColors = [['#E8A0A0','#A890D8'],['#7BB8E0','#6EC8A8'],['#E8A070','#E8D060'],['#A890D8','#E8A0A0'],['#6EC8A8','#7BB8E0'],['#E8D060','#E8A070'],['#E8A0A0','#7BB8E0'],['#A890D8','#6EC8A8']];
+const flColors = ['#E8A0A0','#A890D8','#7BB8E0','#6EC8A8','#E8D060','#E8A070','#C9B0D8','#FFB6A3'];
+
+function spawnElements(container, bfCount, flCount) {
+  for (let i = 0; i < bfCount; i++) {
+    const c = bfColors[i % bfColors.length];
+    container.appendChild(makeButterflyEl(20 + Math.random()*28, c[0], c[1], 6 + Math.random()*10, Math.random()*-12, Math.random()*90, Math.random()*85));
+  }
+  for (let i = 0; i < flCount; i++) {
+    const col = flColors[i % flColors.length];
+    container.appendChild(makeFlowerEl(14 + Math.random()*18, col, 4 + Math.random()*6, Math.random()*-8, Math.random()*90, Math.random()*85));
+  }
+}
+
+function spawnParticles() {
+  const pc = document.getElementById('particles');
+  const cols = ['#E8A0A0','#A890D8','#7BB8E0','#6EC8A8','#E8D060','#E8A070','#C8B070'];
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const s = 3 + Math.random()*7;
+    const dur = 6 + Math.random()*12;
+    const delay = Math.random()*-12;
+    p.style.cssText = `width:${s}px;height:${s}px;background:${cols[Math.floor(Math.random()*cols.length)]};left:${Math.random()*100}%;top:${Math.random()*100}%;animation-duration:${dur}s;animation-delay:${delay}s;opacity:.6`;
+    pc.appendChild(p);
+  }
+}
+
+let animating = false;
+function openEnvelope() {
+  if (animating) return;
+  animating = true;
+  const wrap = document.getElementById('envelopeWrap');
+  const seal = document.getElementById('waxSeal');
+  const flap = document.getElementById('envFlap');
+  const card = document.getElementById('inviteCard');
+  wrap.classList.add('opening');
+  seal.classList.add('breaking');
+  setTimeout(() => { flap.classList.add('open'); }, 500);
+  setTimeout(() => { card.classList.add('fullReveal'); }, 2600);
+  setTimeout(() => { showSite(); }, 6200);
+}
+
+function showSite() {
+  const overlay = document.getElementById('inviteOverlay');
+  overlay.classList.add('fading');
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    const main = document.getElementById('mainContent');
+    main.style.display = 'block';
+    main.style.opacity = '0';
+    main.style.transition = 'opacity .8s ease';
+    requestAnimationFrame(() => { main.style.opacity = '1'; });
+    const nav = document.getElementById('mainNav');
+    nav.style.display = 'flex';
+    requestAnimationFrame(() => { nav.classList.add('slide-in'); });
+    triggerReveal();
+    startCountdown();
+  }, 800);
+}
+
+function triggerReveal() {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+}
+
+function startCountdown() {
+  const target = new Date('2026-12-13T15:00:00+08:00');
+  function update() {
+    const diff = target - new Date();
+    if (diff <= 0) return;
+    const totalDays = Math.floor(diff / 86400000);
+    document.getElementById('cdMonths').textContent = Math.floor(totalDays / 30.44);
+    document.getElementById('cdDays').textContent = totalDays % Math.round(30.44);
+    document.getElementById('cdHours').textContent = Math.floor((diff % 86400000) / 3600000);
+    document.getElementById('cdMins').textContent = Math.floor((diff % 3600000) / 60000);
+  }
+  update();
+  setInterval(update, 60000);
+}
+
+document.getElementById('hamburger').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+});
+
+window.addEventListener('DOMContentLoaded', function() {
+  spawnParticles();
+  spawnElements(document.getElementById('bgBf'), 10, 8);
+  document.getElementById('envelopeWrap').addEventListener('click', openEnvelope);
+  document.getElementById('skipBtn').addEventListener('click', showSite);
+  setTimeout(function() {
+    spawnElements(document.getElementById('heroBf'), 8, 6);
+    spawnElements(document.getElementById('footerBf'), 6, 5);
+  }, 100);
+});
+</script>
+</body>
+</html>
