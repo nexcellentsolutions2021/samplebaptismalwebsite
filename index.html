@@ -566,17 +566,6 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
 });
 
-/* ══ INIT ══ */
-window.addEventListener('DOMContentLoaded', function() {
-  spawnParticles();
-  spawnElements(document.getElementById('bgBf'), 10, 8);
-  document.getElementById('envelopeWrap').addEventListener('click', openEnvelope);
-  document.getElementById('skipBtn').addEventListener('click', showSite);
-  setTimeout(function() {
-    spawnElements(document.getElementById('heroBf'), 8, 6);
-    spawnElements(document.getElementById('footerBf'), 6, 5);
-  }, 100);
-});
 </script>
 </body>
 </html>
